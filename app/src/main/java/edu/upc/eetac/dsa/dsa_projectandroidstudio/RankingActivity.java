@@ -33,8 +33,6 @@ public class RankingActivity extends AppCompatActivity {
         Button ranking_btn = (Button) findViewById(R.id.activity_btn);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
 
-        recyclerView.setHasFixedSize(true);
-
         services = ApiRetrofit.getApiService().create(ApiServices.class);
 
         ranking_btn.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +64,7 @@ public class RankingActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
                     }
                 });
+
                 Toast.makeText(getApplicationContext(), "Ranking updated", Toast.LENGTH_LONG).show();
             }
         });
