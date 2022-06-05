@@ -1,5 +1,6 @@
 package edu.upc.eetac.dsa.dsa_projectandroidstudio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.view.View;
@@ -15,7 +16,12 @@ import com.squareup.picasso.Picasso;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    private List<UserRanking> usersList;
+    private ArrayList<UserRanking> usersList;
+
+    public RecyclerAdapter(ArrayList<UserRanking> usersList)
+    {
+        this.usersList = usersList;
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -24,35 +30,26 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         public TextView username_txt;
         public TextView points_txt;
 
-        public ViewHolder(View v) {
+        public ViewHolder(final View v) {
             super(v);
 
-            layout = v;
             image = (ImageView) v.findViewById(R.id.icon);
             username_txt = (TextView) v.findViewById(R.id.firstLine);
             points_txt = (TextView) v.findViewById(R.id.secondLine);
         }
     }
 
-    public RecyclerAdapter(List<UserRanking> myDataset)
-    {
-        usersList = myDataset;
-    }
-
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_layout, parent, false);
 
-        View v =inflater.inflate(R.layout.row_layout, parent, false);
-
-        ViewHolder vh = new ViewHolder(v);
-        return vh;
+        return  new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerAdapter.ViewHolder holder, int position) {
 
         holder.username_txt.setText(usersList.get(position).getUsername());
         holder.points_txt.setText(usersList.get(position).getPoints());
@@ -64,4 +61,5 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public int getItemCount() {
         return usersList.size();
     }
+
 }
