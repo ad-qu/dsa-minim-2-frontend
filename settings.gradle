@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "dsa-minim-2"
+rootProject.name = "DSA-ProjectAndroidStudio"
 include ':app'

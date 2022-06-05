@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa;
+package edu.upc.eetac.dsa.dsa_projectandroidstudio;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import com.squareup.picasso.Picasso;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
-    private List<Users> usersList;
+    private List<UserRanking> usersList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -34,7 +34,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
     }
 
-    public RecyclerAdapter(List<Users> myDataset)
+    public RecyclerAdapter(List<UserRanking> myDataset)
     {
         usersList = myDataset;
     }

@@ -1,12 +1,12 @@
-package edu.upc.eetac.dsa;
+package edu.upc.eetac.dsa.dsa_projectandroidstudio;
 
-public class Users {
+public class UserRanking {
 
     String username;
     int points;
     String avatar;
 
-    public Users(String username, int points, String avatar) {
+    public UserRanking(String username, int points, String avatar) {
 
         this.username = username;
         this.points = points;
@@ -21,5 +21,3 @@ public class Users {
         return this.avatar;
     }
 }
-
-

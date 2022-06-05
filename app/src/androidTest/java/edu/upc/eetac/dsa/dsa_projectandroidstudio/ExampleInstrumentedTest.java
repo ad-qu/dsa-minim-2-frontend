@@ -1,4 +1,4 @@
-package edu.upc.eetac.dsa;
+package edu.upc.eetac.dsa.dsa_projectandroidstudio;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("edu.upc.eetac.dsa", appContext.getPackageName());
+        assertEquals("edu.upc.eetac.dsa.dsa_projectandroidstudio", appContext.getPackageName());
     }
 }

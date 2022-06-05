@@ -1,12 +1,11 @@
-package edu.upc.eetac.dsa;
+package edu.upc.eetac.dsa.dsa_projectandroidstudio;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiConnection {
+public class ApiRetrofit {
 
     private static Retrofit retrofit;
 

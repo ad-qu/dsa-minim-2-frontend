@@ -1,5 +1,6 @@
-package edu.upc.eetac.dsa;
+package edu.upc.eetac.dsa.dsa_projectandroidstudio;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import android.os.Bundle;
@@ -33,23 +34,23 @@ public class RankingActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        services = ApiConnection.getApiService().create(ApiServices.class);
+        services = ApiRetrofit.getApiService().create(ApiServices.class);
 
         ranking_btn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                Call<List<Users>> rankingCall = services.getRanking();
+                Call<List<UserRanking>> rankingCall = services.getRanking();
 
-                rankingCall.enqueue(new Callback<List<Users>>() {
+                rankingCall.enqueue(new Callback<List<UserRanking>>() {
 
                     @Override
-                    public void onResponse(Call<List<Users>> call, Response<List<Users>> response) {
+                    public void onResponse(Call<List<UserRanking>> call, Response<List<UserRanking>> response) {
 
                         if(response.code() == 201) {
 
-                            List<Users> rankingCall = response.body();
+                            List<UserRanking> rankingCall = response.body();
                             myAdapter = new RecyclerAdapter(rankingCall);
                             recyclerView.setAdapter(myAdapter);
 
@@ -61,10 +62,21 @@ public class RankingActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<List<Users>> call, Throwable t) {
+                    public void onFailure(Call<List<UserRanking>> call, Throwable t) {
                         Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
                     }
                 });
+
+                /*UserRanking u1 = new UserRanking("a", 100, "https://avatars.githubusercontent.com/u/50048787?v=4");
+                UserRanking u2 = new UserRanking("b", 10, "https://avatars.githubusercontent.com/u/57569408?v=4");
+
+                List<UserRanking> rankingCall = new LinkedList<>();
+                rankingCall.add(u1);
+                rankingCall.add(u2);
+                myAdapter = new RecyclerAdapter(rankingCall);
+                recyclerView.setAdapter(myAdapter);
+
+                Toast.makeText(getApplicationContext(), "Ranking updated", Toast.LENGTH_LONG).show();*/
             }
         });
     }
