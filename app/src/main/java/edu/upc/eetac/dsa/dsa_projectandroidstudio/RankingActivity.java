@@ -1,8 +1,10 @@
 package edu.upc.eetac.dsa.dsa_projectandroidstudio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +24,7 @@ public class RankingActivity extends AppCompatActivity {
 
     ApiServices services;
 
-    private ArrayList<UserRanking> rankingCall = new ArrayList<>();
+    public ArrayList<UserRanking> rankingCall;
     private RecyclerView recyclerView;
 
     @Override
@@ -49,7 +51,9 @@ public class RankingActivity extends AppCompatActivity {
 
                         if(response.code() == 201) {
 
-                            List<UserRanking> rankingCall = response.body();
+                            List<UserRanking> body = response.body();
+
+                            SetInfo(body);
                             setAdapter();
 
                             Toast.makeText(getApplicationContext(), "Ranking updated", Toast.LENGTH_LONG).show();
@@ -69,6 +73,8 @@ public class RankingActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void SetInfo(List<UserRanking> body) { rankingCall = new ArrayList<UserRanking>(body); }
 
     private void setAdapter() {
 
